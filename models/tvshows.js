@@ -14,5 +14,5 @@ const tvSchema = new mongoose.Schema({
 
 const Shows = mongoose.model("tvshows",tvSchema)
 
-
+// export the model object 
 module.exports = Shows
