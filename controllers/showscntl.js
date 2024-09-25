@@ -40,12 +40,21 @@ const getAllShows = async (req, res) => {
         }
       }
 
-
+      const deleteAShow = async (req,res) => {
+        try{
+            await shows.findByIdAndDelete(req.params.id);
+            res.redirect("/tvshows");
+        } catch (err) {
+            console.log(err);
+            res.redirect(`/`);
+         }
+        }
+      
 
 
       module.exports = {
         getAllShows,
         getOneShow,
         createAShow,
-        
+deleteAShow,
       }
