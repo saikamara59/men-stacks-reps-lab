@@ -12,4 +12,7 @@ const tvSchema = new mongoose.Schema({
     images:[imageSchema],
 });
 
-const shows = mongoose.model("tvshows",tvSchema)
+const Shows = mongoose.model("tvshows",tvSchema)
+
+
+module.exports = Shows
