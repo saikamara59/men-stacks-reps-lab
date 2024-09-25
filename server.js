@@ -45,10 +45,38 @@ app.use(morgan("dev")); //new
 app.use(express.static(path.join(__dirname,"public")));
 
 
-app.get("/", (req, res) => {
-    res.render("index");
+// app.get("/", (req, res) => {
+//     res.render("index");
+//   });
+
+// new show route
+  app.get("/shows/new",tvShowController.getNewShowForm);
+
+  app.get("/shows",tvShowController.getAllShows);
+
+  app.get("shows/:id",tvShowController.getOneShow);
+
+  app.get("/shows/:showId/edit", tvShowController.editShowForm);
+// app.post - POST 
+  app.post("/shows",tvShowController.createAShow);
+
+  app.post("/shows/:showid/images",async (req,res)=> {
+    console.log("req.body", req.body);
+    console.log("req.params",req.params);
+    try {
+        const foundAShow = await shows.findById(req.params.showId)
+    } catch (err) {
+        console.log(err);
+        res.redirect(`/shows/${rew.params.showId}`) 
+        
+    }
   });
 
+  app.delete("/shows/:id",tvShowController.deleteAShow);
 
-  app.get("/shows/new", )
+
   
+
+  app.listen(PORT,() => {
+    console.log(`Listening on port ${PORT}`);
+  })
