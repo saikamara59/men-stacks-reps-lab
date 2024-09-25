@@ -1,4 +1,4 @@
-const shows = require("./models/tvshows");
+const shows = require("../models/tvshows");
 
 
 const getAllShows = async (req, res) => {
@@ -23,7 +23,7 @@ const getAllShows = async (req, res) => {
       }
 
 
-      const getNewShow = (req, res) => {
+      const getNewShowForm = (req, res) => {
         res.render("tvshows/new")}
       const createAShow = async (req, res) => {
         if (req.body.isAActor) {
@@ -50,11 +50,45 @@ const getAllShows = async (req, res) => {
          }
         }
       
+            const editShowForm = async (req,res) => {
+                try {
+                    const showsToEdit = await shows.findById(req.params.showId);
+                    res.render("shows/edit",{ shows:showsToEdit});
+                } catch (err) {
+                        console.log(err);
+                            res.redirect(`/`);
+                        }
+                    }
+                
+                    const editShow = async (req,res) => {
+                        try {
+                            if (req.body.isAActor === "on") {
+                                req.body.isAActor = true;
+                            } else {
+                                req.body.isAActor = false
+                            }
+                        
+                        await shows.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+                            res.redirect(`/shows/${req.params.id}`);
+                        } catch(err){
+                            console.log(err);
+                            res.redirect(`/shows/${req.params.id}`);
+                        }
+                        
+                    }
+                    
+            
+
+
 
 
       module.exports = {
         getAllShows,
         getOneShow,
         createAShow,
-deleteAShow,
+        deleteAShow,
+        editShowForm,
+        editShow,
+        getNewShowForm
       }

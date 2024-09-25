@@ -3,12 +3,12 @@ const express = require ("express");
 const dotenv = require("dotenv");
 
 const mongoose = require ("mongoose");
-
+const tvShowController = require("./controllers/showscntl")
 const methodOverride = require("method-override");
 
 const morgan = require("morgan");
 
-
+const path = require("path");
 // APP = configs
 dotenv.config();
 
@@ -48,4 +48,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.get("/", (req, res) => {
     res.render("index");
   });
+
+
+  app.get("/shows/new", )
   
