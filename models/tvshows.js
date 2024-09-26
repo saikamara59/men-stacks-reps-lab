@@ -1,18 +1,17 @@
-const mongoose = require("mongoose")
-
+const mongoose = require("mongoose");
 
 const imageSchema = new mongoose.Schema({
-    imageUrl: {type: String, required: true},
-    uploadedBy: { type: String , required: "Guest"},
-})
-
-const tvSchema = new mongoose.Schema({
-    name: {type: String , required:true},
-    isAShow:{type : String , required: true},
-    images:[imageSchema],
+    imageUrl: { type: String, required: true },
+    uploadedBy: { type: String, required: true, default: "Guest" },
 });
 
-const Shows = mongoose.model("tvshows",tvSchema)
+const tvSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    isAShow: { type: Boolean, required: true },
+    images: [imageSchema],
+});
+
+const tvShow = mongoose.model("tvShow", tvSchema);
 
 // export the model object 
-module.exports = Shows
+module.exports = tvShow;

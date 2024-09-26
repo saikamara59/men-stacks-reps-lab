@@ -7,11 +7,11 @@
   </head>
   <body>
     <%- include('../partials/nav') %>
-    <h1>TV Show Page</h1>
+    <h1>Tv Show Page</h1>
     <section>
       <h2>Name: <%=show.name %></h2>
       <% if (show.isAShow) { %>
-      <p>This is A Show!</p>
+      <p>This is a show!</p>
       <% } else { %>
       <p>This is not a show!</p>
       <% } %>
@@ -32,8 +32,9 @@
       <% } %>
     </section>
 
+    <!-- section > form (post) -> image create route  -->
     <section>
-      <h2>Upload an image of this Show!</h2>
+      <h2>Upload an image of this Tv Show!</h2>
       <form method="POST" action="/shows/<%=show._id%>/images">
         <div>
           <!-- label + input for: imageUrl  -->
@@ -45,18 +46,18 @@
           <label for="user-upload">Your Name</label>
           <input id="user-upload" type="text" name="uploadedBy" />
         </div>
-
+        <!-- TODO: adding a description field to form and schema -> use the description of the image to set an alt tag for the images  -->
         <button type="submit">UPLOAD IMAGE</button>
       </form>
     </section>
 
     <hr />
     <form method="POST" action="/shows/<%= show._id%>?_method=DELETE">
-      <button type="submit">Delete This Show</button>
+      <button type="submit">Delete Tv Show</button>
     </form>
 
     <section>
-      <a href="/shows/<%= show._id%>/edit">Edit Show</a>
+      <a href="/shows/<%= show._id%>/edit">Edit Tv Show</a>
     </section>
   </body>
 </html>

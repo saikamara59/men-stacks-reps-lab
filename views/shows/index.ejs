@@ -4,19 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Show Index Page</title>
-    <link rel="stylesheet" href="/styles/show.css" />
+    <link rel="stylesheet" href="/styles/shows.css" />
   </head>
 
   <body>
     <%- include('../partials/nav') %>
-    <h1><%= message %> - All Shows</h1>
+    <h1><%= message %> - All Tv Shows</h1>
     <ul>
-      <!-- EJS iterator -> loops over the fruits context variable - set inside of res.render( {}) -->
       <% shows.forEach(show => { %>
       <li><a href="/shows/<%= show._id %>"><%= show.name %></a></li>
       <% }); %>
     </ul>
 
-    <a href="/shows/new">Add New Show</a>
+    <a href="/shows/new">Add A New Show</a>
   </body>
 </html>

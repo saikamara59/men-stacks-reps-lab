@@ -8,17 +8,17 @@
   </head>
   <body>
     <%- include('../partials/nav') %>
-    <h1>Create a New Show!</h1>
+    <h1>Create a New Tv Show</h1>
     <!-- config a html form -> two attributes (action-> endpoint string) (method-> POSt) -->
     <form action="/shows" method="POST">
       <!-- system of related html tags/elements -->
       <!-- input > name + type (attributes) -->
       <div>
-        <label for="name">Show Name:</label>
+        <label for="name">Tv Show Name:</label>
         <input type="text" name="name" id="name" />
       </div>
       <div>
-        <label for="isAShow">Is A Show :</label>
+        <label for="isAShow">Is A Show:</label>
         <!-- aria - accessibility standard -->
         <input type="checkbox" name="isAShow" id="isAShow" />
       </div>
