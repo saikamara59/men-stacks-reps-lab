@@ -31,7 +31,7 @@ mongoose.connection.on("connected", () => {
 
 
   // IMPORT mongoose models
-const shows = require("./models/tvshows");
+const tvShows = require("./models/tvshows");
 
 
 // configure view engine
@@ -73,8 +73,8 @@ app.use(express.static(path.join(__dirname,"public")));
   });
 
   app.delete("/shows/:id",tvShowController.deleteAShow);
-
-
+// 
+app.put("/shows/:id",tvShowController.editShow);
   
 
   app.listen(PORT,() => {

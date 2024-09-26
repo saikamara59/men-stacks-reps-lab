@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tv Show Page</title>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <h1>TV Show Page</h1>
+    <section>
+      <h2>Name: <%=show.name %></h2>
+      <% if (show.isAShow) { %>
+      <p>This is A Show!</p>
+      <% } else { %>
+      <p>This is not a show!</p>
+      <% } %>
+    </section>
+
+    <section>
+      <% if(show.images.length) {%> <% show.images.forEach( image => { %>
+      <div style="width: 400px">
+        <img
+          src="<%= image.imageUrl %>"
+          alt="Image of <%=show.name%> uploaded by <%= image.uploadedBy  %>"
+          style="width: 100%"
+        />
+        <p>Uploaded by: <%= image.uploadedBy %></p>
+      </div>
+      <% }) %> <% } else { %>
+      <h5>No Images Yet</h5>
+      <% } %>
+    </section>
+
+    <!-- section > form (post) -> image create route  -->
+    <section>
+      <h2>Upload an image of this Show!</h2>
+      <form method="POST" action="/shows/<%=show._id%>/images">
+        <div>
+          <!-- label + input for: imageUrl  -->
+          <label for="imageUrl">Uploaded Image (URL) ***</label>
+          <input id="imageUrl" type="text" name="imageUrl" required />
+        </div>
+        <div>
+          <!-- label + input for: uploadedBy  -->
+          <label for="user-upload">Your Name</label>
+          <input id="user-upload" type="text" name="uploadedBy" />
+        </div>
+
+        <button type="submit">UPLOAD IMAGE</button>
+      </form>
+    </section>
+
+    <hr />
+    <form method="POST" action="/shows/<%= show._id%>?_method=DELETE">
+      <button type="submit">Delete This Show</button>
+    </form>
+
+    <section>
+      <a href="/shows/<%= show._id%>/edit">Edit Show</a>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/form.css" />
+    <title>Add New Show</title>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <h1>Create a New Show!</h1>
+    <!-- config a html form -> two attributes (action-> endpoint string) (method-> POSt) -->
+    <form action="/shows" method="POST">
+      <!-- system of related html tags/elements -->
+      <!-- input > name + type (attributes) -->
+      <div>
+        <label for="name">Show Name:</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div>
+        <label for="isAShow">Is A Show :</label>
+        <!-- aria - accessibility standard -->
+        <input type="checkbox" name="isAShow" id="isAShow" />
+      </div>
+      <!-- submit button will trigger the form request -> send data (name attribute -> { } -> endpoint) -->
+      <button type="submit">Add Shows</button>
+    </form>
+  </body>
+</html>

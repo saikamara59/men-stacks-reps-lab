@@ -8,7 +8,7 @@ const imageSchema = new mongoose.Schema({
 
 const tvSchema = new mongoose.Schema({
     name: {type: String , required:true},
-    isAActor:{type : String , required: true},
+    isAShow:{type : String , required: true},
     images:[imageSchema],
 });
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shows Edit Page</title>
+  </head>
+
+  <body>
+    <h1>Show Edit - <%= shows.name %></h1>
+    <form method=" POST" action="/shows/<%= show._id%>?_method=PUT">
+      <div>
+        <label for="name">Tv Show Name:</label>
+        <input type="text" name="name" id="name" value="<%= show.name %>" />
+      </div>
+      <div>
+        <label for="isAShow">Is A Show:</label>
+        <!-- aria - accessibility standard -->
+        <input type="checkbox" name="isAShow" id="isAShow" <%= show.isAShow ?
+        "checked" : "" %> />
+      </div>
+
+      <button type="submit">Edit Show</button>
+    </form>
+  </body>
+</html>

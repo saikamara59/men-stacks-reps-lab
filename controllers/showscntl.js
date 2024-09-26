@@ -1,3 +1,4 @@
+const { appendFile } = require("fs");
 const shows = require("../models/tvshows");
 
 
@@ -26,10 +27,10 @@ const getAllShows = async (req, res) => {
       const getNewShowForm = (req, res) => {
         res.render("tvshows/new")}
       const createAShow = async (req, res) => {
-        if (req.body.isAActor) {
-          req.body.isAActor = true;
+        if (req.body.isAShow) {
+          req.body.isAShow = true;
         } else {
-          req.body.isAActor = false;
+          req.body.isAShow = false;
         }
       
         try {
@@ -62,10 +63,10 @@ const getAllShows = async (req, res) => {
                 
                     const editShow = async (req,res) => {
                         try {
-                            if (req.body.isAActor === "on") {
-                                req.body.isAActor = true;
+                            if (req.body.isAShow === "on") {
+                                req.body.isAShow = true;
                             } else {
-                                req.body.isAActor = false
+                                req.body.isAShow = false
                             }
                         
                         await shows.findByIdAndUpdate(req.params.id, req.body, {new: true});
@@ -77,6 +78,8 @@ const getAllShows = async (req, res) => {
                         }
                         
                     }
+
+                    
                     
             
 
