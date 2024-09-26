@@ -9,8 +9,8 @@
     <%- include('../partials/nav') %>
     <h1>Tv Show Page</h1>
     <section>
-      <h2>Name: <%=show.name %></h2>
-      <% if (show.isAShow) { %>
+      <h2>Name: <%=shows.name %></h2>
+      <% if (shows.isAShow) { %>
       <p>This is a show!</p>
       <% } else { %>
       <p>This is not a show!</p>
@@ -18,11 +18,11 @@
     </section>
 
     <section>
-      <% if(show.images.length) {%> <% show.images.forEach( image => { %>
+      <% if(shows.images.length) {%> <% shows.images.forEach( image => { %>
       <div style="width: 400px">
         <img
           src="<%= image.imageUrl %>"
-          alt="Image of <%=show.name%> uploaded by <%= image.uploadedBy  %>"
+          alt="Image of <%=shows.name%> uploaded by <%= image.uploadedBy  %>"
           style="width: 100%"
         />
         <p>Uploaded by: <%= image.uploadedBy %></p>
@@ -35,7 +35,7 @@
     <!-- section > form (post) -> image create route  -->
     <section>
       <h2>Upload an image of this Tv Show!</h2>
-      <form method="POST" action="/shows/<%=show._id%>/images">
+      <form method="POST" action="/shows/<%= shows._id%>/images">
         <div>
           <!-- label + input for: imageUrl  -->
           <label for="imageUrl">Uploaded Image (URL) ***</label>
@@ -52,12 +52,12 @@
     </section>
 
     <hr />
-    <form method="POST" action="/shows/<%= show._id%>?_method=DELETE">
+    <form method="POST" action="/shows/<%= shows._id%>?_method=DELETE">
       <button type="submit">Delete Tv Show</button>
     </form>
 
     <section>
-      <a href="/shows/<%= show._id%>/edit">Edit Tv Show</a>
+      <a href="/shows/<%= shows._id%>/edit">Edit Tv Show</a>
     </section>
   </body>
 </html>

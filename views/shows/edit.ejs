@@ -7,21 +7,21 @@
   </head>
 
   <body>
-    <h1>Show Edit - <%= show.name %></h1>
-    <form method="POST" action="/shows/<%= show._id %>?_method=PUT">
+    <h1>Show Edit - <%= shows.name %></h1>
+    <form method="POST" action="/shows/<%= shows._id %>?_method=PUT">
       <div>
         <label for="name">Tv Show Name:</label>
         <input
           type="text"
           name="name"
           id="name"
-          value="<%= show.name %>"
+          value="<%= shows.name %>"
           aria-label="Tv Show Name"
         />
       </div>
       <div>
         <label for="isAShow">Is A Show:</label>
-        <input type="checkbox" name="isAShow" id="isAShow" <%= show.isAShow ?
+        <input type="checkbox" name="isAShow" id="isAShow" <%= shows.isAShow ?
         "checked" : "" %> aria-label="Is A Show" />
       </div>
 

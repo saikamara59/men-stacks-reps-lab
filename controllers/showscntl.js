@@ -15,7 +15,7 @@ const getOneShow = async (req, res) => {
   try {
     const foundAShow = await tvShow.findById(req.params.id);
     const contextShow = { shows: foundAShow };
-    res.render("shows/index", contextShow);
+    res.render("shows/newer", contextShow);
   } catch (err) {
     console.log(err);
     res.redirect("/");

@@ -63,7 +63,7 @@ app.get("/", (req, res) => {
     console.log("req.body", req.body);
     console.log("req.params", req.params);
     try {
-        const foundAShow = await Shows.findById(req.params.showId);
+        const foundAShow = await tvShow.findById(req.params.showId);
         if (req.body.uploadedBy === "") {
             delete req.body.uploadedBy;
             console.log("after parsing", req.body);
